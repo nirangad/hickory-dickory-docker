@@ -9,4 +9,7 @@ COPY index.html /usr/share/nginx/helloworld/
 
 COPY hellowordnginx.conf /etc/nginx/conf.d/
 
+HEALTHCHECK --interval=5s --timeout=5s --retries=3 \
+  CMD ping -c 1 http://localhost
+
 CMD ["nginx", "-g", "daemon off;"]
